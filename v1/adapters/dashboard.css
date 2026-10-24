@@ -1,0 +1,12 @@
+/* theme v1 · adapter for «داشبورد پروژه‌ها» — maps the dashboard's own variables onto the theme tokens.
+   Selectors are more specific than the dashboard's body / body.dark / body[data-accent] rules, so no other change is needed.
+   The dashboard keeps its own font choice (--font); delete that line's comment below to use the theme's text font instead. */
+html body, html body.dark, html body[data-accent], html body.dark[data-accent] {
+  --bg: var(--t-bg); --card: var(--t-surface); --row: var(--t-surface2); --line: var(--t-line); --text: var(--t-ink); --muted: var(--t-faint);
+  --button: var(--t-surface2); --button-text: var(--t-ink); --button-border: var(--t-line-strong); --input-bg: var(--t-surface); --input-border: var(--t-line-strong);
+  --green: var(--t-ok); --orange: var(--t-sun-a); --red: var(--t-danger); --gray: var(--t-faint);
+  --accent: var(--t-accent); --accent-2: var(--t-accent2); --accent-soft: var(--t-accent-soft); --accent-ink: var(--t-on-accent);
+  --shadow: 0 1px 2px var(--t-shadow-soft), 0 8px 24px var(--t-shadow-soft); --shadow-lg: 0 18px 48px var(--t-shadow);
+  /* --font: var(--f-text); */
+}
+html body { background: var(--t-bg); background-image: radial-gradient(60% 40% at 0% 0%, var(--t-mesh1), transparent 70%), radial-gradient(50% 40% at 100% 100%, var(--t-mesh2), transparent 72%); background-attachment: fixed; }
