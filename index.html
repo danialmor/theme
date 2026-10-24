@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Theme · colours, fonts and shapes for every project</title>
+<meta name="theme-color" content="#f3f6ff">
+<link rel="stylesheet" href="v1/theme.css">
+<script src="v1/theme.js"></script>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; background: var(--t-bg); color: var(--t-ink); font: 15px/1.5 var(--f-text); min-height: 100vh; background-image: radial-gradient(55% 45% at 0% 0%, var(--t-mesh1), transparent 70%), radial-gradient(50% 45% at 100% 100%, var(--t-mesh2), transparent 72%); background-attachment: fixed; }
+  h1, h2, h3 { font-family: var(--f-display); margin: 0; letter-spacing: -.01em; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: 0; padding: 0; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 22px 18px 60px; }
+  header.top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 18px; }
+  header.top h1 { font-size: 30px; font-weight: 800; } header.top p { margin: 2px 0 0; color: var(--t-faint); font-size: 13.5px; } .grow { flex: 1; }
+  .seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 999px; background: var(--t-line-fine); } .seg button { min-height: 34px; padding: 0 14px; border-radius: 999px; font-weight: 600; font-size: 13.5px; color: var(--t-soft); } .seg button[aria-pressed=true] { background: var(--t-surface); color: var(--t-ink); box-shadow: 0 4px 10px -5px var(--t-shadow-soft); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--t-line); background: var(--t-surface); font-weight: 600; font-size: 13.5px; transition: transform .25s; } .btn:active { transform: scale(.96); } .btn.primary { border-color: transparent; color: var(--t-on-accent); background: linear-gradient(135deg, var(--t-accent), var(--t-accent2)); } .btn.danger { color: var(--t-danger); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .card { background: var(--t-surface); border: 2px solid var(--t-line); border-radius: 24px; padding: 10px; } .card.on { border-color: var(--t-accent); }
+  .prev { height: 124px; border-radius: 16px; padding: 12px; } .win { height: 100%; display: flex; border-radius: 12px; border: 1px solid; overflow: hidden; } .side { width: 26%; padding: 8px 6px; border-right: 1px solid; display: grid; gap: 5px; align-content: start; } .side i { height: 14px; border-radius: 5px; } .side u { height: 6px; border-radius: 3px; }
+  .main { flex: 1; padding: 9px 10px; display: grid; gap: 7px; align-content: start; } .main s { height: 8px; width: 48%; border-radius: 4px; } .chips { display: flex; gap: 4px; } .chips i { width: 16px; height: 12px; border-radius: 5px; border: 1.5px solid; } .main b { font: 700 10px var(--f-display); padding: 4px 8px; border-radius: 999px; width: max-content; }
+  .meta { padding: 10px 4px 2px; display: flex; align-items: center; gap: 8px; } .meta small { color: var(--t-faint); display: block; } .acts { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 0 2px; }
+  h3.sec { font-size: 15px; margin: 20px 0 10px; }
+  .sws { display: flex; flex-wrap: wrap; gap: 10px; } .sw { display: grid; grid-template-columns: 38px auto; column-gap: 9px; align-items: center; text-align: left; padding: 6px 12px 6px 6px; border-radius: 16px; background: var(--t-surface); border: 1px solid var(--t-line); } .sw i { grid-row: 1 / 3; width: 38px; height: 38px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--t-line); } .sw b { font-size: 12.5px; } .sw code { font-size: 11.5px; color: var(--t-faint); }
+  .fonts { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; } .font { padding: 14px 16px; border-radius: 20px; background: var(--t-surface); border: 1px solid var(--t-line); }
+  pre { margin: 0; padding: 14px 16px; border-radius: 16px; background: var(--t-ink); color: var(--t-bg); overflow: auto; font: 13px/1.6 ui-monospace, Menlo, monospace; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; } @media (max-width: 640px) { .two { grid-template-columns: 1fr; } }
+  select, input[type=text], textarea { width: 100%; min-height: 40px; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--t-line); background: var(--t-surface); }
+  dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; } dialog::backdrop { background: rgba(20,10,40,.45); backdrop-filter: blur(4px); }
+  .sheet { width: min(640px, 100vw - 24px); max-height: 92vh; overflow: auto; background: var(--t-surface); color: var(--t-ink); border: 1px solid var(--t-line); border-radius: 26px; padding: 18px 20px; display: grid; gap: 14px; }
+  .edgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; } .ed { display: flex; align-items: center; gap: 8px; padding: 6px 10px 6px 6px; border-radius: 14px; background: var(--t-line-fine); font-size: 13px; font-weight: 600; } .ed input { width: 34px; height: 34px; padding: 0; border: 0; border-radius: 10px; background: none; cursor: pointer; }
+  .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); padding: 10px 16px; border-radius: 14px; background: var(--t-ink); color: var(--t-bg); font-weight: 600; z-index: 99; }
+  .note { color: var(--t-faint); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div><h1>Theme</h1><p>One colour and font system for every project. Pin <code>v1</code> and it never changes under you.</p></div>
+    <span class="grow"></span>
+    <div class="seg" id="tabs" role="tablist"></div>
+  </header>
+  <main id="view"></main>
+</div>
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); }, T = window.Theme, C = T.color, tab = 'themes', q = '', kind = 'all';
+  T.init({});
+  function h(tag, a) { var e = document.createElement(tag); a = a || {}; for (var k in a) { var v = a[k]; if (v == null || v === false) continue; if (k === 'class') e.className = v; else if (k === 'style') e.setAttribute('style', v); else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2).toLowerCase(), v); else e.setAttribute(k, v === true ? '' : v); } for (var i = 2; i < arguments.length; i++) add(e, arguments[i]); return e; }
+  function add(e, k) { if (k == null || k === false) return; if (Array.isArray(k)) k.forEach(function (x) { add(e, x); }); else e.appendChild(k.nodeType ? k : document.createTextNode(String(k))); }
+  function toast(m) { var t = h('div', { class: 'toast' }, m); document.body.appendChild(t); setTimeout(function () { t.remove(); }, 2200); }
+  function copy(txt, msg) { (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).catch(function () { var t = h('textarea', { style: 'position:fixed;opacity:0' }); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }).then(function () { toast(msg || 'Copied'); }, function () { toast(msg || 'Copied'); }); }
+
+  function preview(d) {
+    var line = C.alpha(d.ink, .14);
+    return h('div', { class: 'prev', style: 'background:radial-gradient(60% 70% at 8% 0%,' + C.alpha(d.mesh[0], .55) + ',transparent 70%),radial-gradient(60% 70% at 100% 100%,' + C.alpha(d.mesh[1], .55) + ',transparent 72%),' + d.bg },
+      h('div', { class: 'win', style: 'background:' + d.surface + ';border-color:' + line + ';color:' + d.ink },
+        h('div', { class: 'side', style: 'background:' + d.surface2 + ';border-color:' + line }, h('i', { style: 'background:' + d.accent }), h('u', { style: 'background:' + C.alpha(d.ink, .25) }), h('u', { style: 'background:' + C.alpha(d.ink, .15) })),
+        h('div', { class: 'main' }, h('s', { style: 'background:' + d.ink }), h('div', { class: 'chips' }, T.hues.slice(0, 5).map(function (k) { return h('i', { style: 'background:' + T.ramp(d.hues[k], d.mode, d.bg).c + ';border-color:' + d.hues[k] }); })), h('b', { style: 'background:linear-gradient(135deg,' + d.accent + ',' + d.accent2 + ');color:' + C.onColor(d.accent) }, 'Aa'))));
+  }
+  function themeCard(d) {
+    var cfg = T.config(), on = T.current().id === d.id;
+    return h('article', { class: 'card' + (on ? ' on' : '') }, preview(d),
+      h('div', { class: 'meta' }, h('div', { class: 'grow' }, h('b', null, d.name), h('small', null, d.mode + (d.builtin ? ' · built in' : ' · mine') + (on ? ' · in use' : ''))), h('code', null, d.id)),
+      h('div', { class: 'acts' }, h('button', { class: 'btn primary', onclick: function () { T.use(d.id); render(); } }, 'Use'), h('button', { class: 'btn', onclick: function () { copy(T.json(d), 'Theme JSON copied'); } }, 'Copy JSON'), h('button', { class: 'btn', onclick: function () { edit(JSON.parse(JSON.stringify(d)), true); } }, 'Duplicate'), d.builtin ? null : h('button', { class: 'btn', onclick: function () { edit(JSON.parse(JSON.stringify(d)), false); } }, 'Edit'), d.builtin ? null : h('button', { class: 'btn danger', onclick: function () { T.remove(d.id); render(); } }, 'Delete')));
+  }
+  function sw(c, l) { return h('button', { class: 'sw', onclick: function () { copy(c); }, title: 'Copy ' + c }, h('i', { style: 'background:' + c }), h('b', null, l), h('code', null, c.length > 9 ? c.replace(/\s/g, '') : c)); }
+
+  function themes(v) {
+    v.appendChild(h('div', { style: 'display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center' }, h('div', { class: 'seg' }, [['light', 'Always light'], ['auto', 'Follow device'], ['dark', 'Always dark']].map(function (m) { return h('button', { 'aria-pressed': T.mode() === m[0], onclick: function () { T.mode(m[0]); render(); } }, m[1]); })), h('span', { class: 'grow' }), h('button', { class: 'btn', onclick: function () { var d = JSON.parse(JSON.stringify(T.current())); d.id = ''; d.name = 'My theme'; edit(d, true); } }, '+ New theme'), h('button', { class: 'btn', onclick: importJson }, 'Import JSON')));
+    v.appendChild(h('h3', { class: 'sec' }, 'Built in')); v.appendChild(h('div', { class: 'grid' }, T.themes.map(themeCard)));
+    var mine = T.list().filter(function (t) { return !t.builtin; }); v.appendChild(h('h3', { class: 'sec' }, 'My themes')); v.appendChild(mine.length ? h('div', { class: 'grid' }, mine.map(themeCard)) : h('p', { class: 'note' }, 'Duplicate a theme and change its colours — it will be saved here (in this browser). To use it in another project, copy its JSON and register it there.'));
+  }
+  function colours(v) {
+    var d = T.current(), t = T.tokens(d);
+    v.appendChild(h('div', { style: 'display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:6px' }, h('div', { class: 'grow' }, h('b', null, d.name), h('div', { class: 'note' }, 'Tap any swatch to copy its colour.')), h('button', { class: 'btn', onclick: function () { copy(T.css(d), 'CSS variables copied'); } }, 'Copy CSS variables'), h('button', { class: 'btn', onclick: function () { copy(T.json(d), 'Theme JSON copied'); } }, 'Copy theme JSON')));
+    [['Base', [['Background', d.bg], ['Background 2', d.bg2], ['Surface', d.surface], ['Surface 2', d.surface2], ['Ink', d.ink], ['Lines', t['--t-line']]]], ['Accent', [['Accent', d.accent], ['Accent 2', d.accent2], ['Accent text', t['--t-accent-ink']], ['On accent', t['--t-on-accent']]]], ['Glows', d.mesh.map(function (c, i) { return ['Glow ' + (i + 1), c]; })]].forEach(function (g) { v.appendChild(h('h3', { class: 'sec' }, g[0])); v.appendChild(h('div', { class: 'sws' }, g[1].map(function (x) { return sw(x[1], x[0]); }))); });
+    v.appendChild(h('h3', { class: 'sec' }, 'Pastel hues'));
+    T.hues.forEach(function (k) { var r = T.ramp(d.hues[k], d.mode, d.bg); v.appendChild(h('div', { style: 'margin-bottom:10px' }, h('b', null, k), h('div', { class: 'sws', style: 'margin-top:6px' }, [['Soft', r.s], ['Fill', r.c], ['Strong', r.f], ['Base', d.hues[k]], ['Text', r.a]].map(function (x) { return sw(x[1], x[0]); })))); });
+  }
+  function fonts(v) {
+    var cfg = T.config(), d = T.current(), curD = cfg.fontDisplay || d.font.display, curT = cfg.fontText || d.font.text, list = h('div', { class: 'fonts' });
+    var inp = h('input', { type: 'text', placeholder: 'Search fonts…', value: q, oninput: function () { q = inp.value; draw(); } });
+    function draw() { list.innerHTML = ''; T.fonts.filter(function (f) { return (kind === 'all' || f.kind === kind) && (!q || f.name.toLowerCase().indexOf(q.toLowerCase()) >= 0); }).forEach(function (f) { T.loadFont(f.name); list.appendChild(h('article', { class: 'font' }, h('div', { style: 'display:flex;gap:8px;align-items:center' }, h('b', null, f.name), h('code', { class: 'note' }, f.kind)), h('div', { style: 'font-family:' + T.fontStack(f.name) + ';font-size:26px;line-height:1.15;margin:8px 0 2px;font-weight:600' }, 'Every meeting, visit and promise'), h('div', { class: 'note', style: 'font-family:' + T.fontStack(f.name) }, 'Aa Bb Cc 0123456789 · ۰۱۲۳۴۵۶۷۸۹ · جلسه با مدیرعامل'), h('div', { class: 'acts', style: 'margin-top:8px' }, h('button', { class: 'btn' + (curD === f.name ? ' primary' : ''), onclick: function () { T.fonts_set(f.name, curT); render(); } }, curD === f.name ? '✓ Headings' : 'Use for headings'), h('button', { class: 'btn' + (curT === f.name ? ' primary' : ''), onclick: function () { T.fonts_set(curD, f.name); render(); } }, curT === f.name ? '✓ Text' : 'Use for text'), h('button', { class: 'btn', onclick: function () { copy('font-family: ' + T.fontStack(f.name) + ';'); } }, 'CSS')))); }); }
+    v.appendChild(h('div', { style: 'display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;align-items:center' }, inp, h('div', { class: 'seg' }, ['all', 'sans', 'display', 'serif', 'mono', 'persian'].map(function (k) { return h('button', { 'aria-pressed': kind === k, onclick: function () { kind = k; render(); } }, k); })), h('span', { class: 'grow' }), h('button', { class: 'btn', onclick: function () { T.fonts_set('', ''); render(); } }, 'Use theme fonts')));
+    v.appendChild(h('p', { class: 'note' }, 'Headings: ' + curD + ' · Text: ' + curT + '. Persian text falls back to Vazirmatn automatically.')); v.appendChild(list); draw();
+  }
+  function use(v) {
+    var d = T.current(), base = 'https://danialmor.github.io/theme/v1/';
+    var snip1 = '<link rel="stylesheet" href="' + base + 'theme.css">\n<script src="' + base + 'theme.js"><\/script>\n<script>Theme.init({ light: \'' + (T.config().light) + '\', dark: \'' + (T.config().dark) + '\' })<\/script>';
+    var snip2 = '<link rel="stylesheet" href="' + base + 'theme.css">\n<html data-theme-id="' + d.id + '">   <!-- CSS only, no JavaScript -->';
+    var snip3 = '/* any CSS in your project */\nbody  { background: var(--t-bg); color: var(--t-ink); font-family: var(--f-text); }\n.card { background: var(--t-surface); border: 1px solid var(--t-line); }\n.cta  { background: linear-gradient(135deg, var(--t-accent), var(--t-accent2)); color: var(--t-on-accent); }\n.tag  { background: var(--t-violet-c); color: var(--t-violet-a); }';
+    [['1 · Full (colours, fonts, light/dark, your own themes)', snip1], ['2 · Colours only (no JavaScript)', snip2], ['3 · Use the tokens in your CSS', snip3]].forEach(function (s) { v.appendChild(h('h3', { class: 'sec' }, s[0])); v.appendChild(h('pre', null, s[1])); v.appendChild(h('div', { class: 'acts' }, h('button', { class: 'btn', onclick: function () { copy(s[1], 'Snippet copied'); } }, 'Copy'))); });
+    v.appendChild(h('h3', { class: 'sec' }, 'An app that already has its own variables?')); v.appendChild(h('p', { class: 'note' }, 'Write an adapter: one CSS file that maps the app’s variables to --t-* tokens (see v1/adapters/dashboard.css). Nothing else in the app changes.'));
+    v.appendChild(h('h3', { class: 'sec' }, 'Your custom themes in another project')); v.appendChild(h('p', { class: 'note' }, 'Copy a theme’s JSON, then in the other project: Theme.register(<json>); Theme.use(id).'));
+  }
+
+  function importJson() {
+    var ta = h('textarea', { style: 'min-height:200px;font-family:ui-monospace,monospace;font-size:13px', placeholder: '{ "name": "…", "bg": "#…", … }' }), dlg = h('dialog', null, h('div', { class: 'sheet' }, h('h2', null, 'Import a theme'), ta, h('div', { class: 'acts' }, h('button', { class: 'btn', onclick: function () { dlg.close(); } }, 'Cancel'), h('button', { class: 'btn primary', onclick: function () { try { var o = JSON.parse(ta.value); ['bg', 'surface', 'ink', 'accent'].forEach(function (k) { if (!C.parse(o[k] || '')) throw new Error('missing ' + k); }); dlg.close(); o.id = ''; edit(o, true); } catch (e) { toast('Could not read it: ' + e.message); } } }, 'Continue'))));
+    document.body.appendChild(dlg); dlg.showModal(); dlg.addEventListener('close', function () { dlg.remove(); });
+  }
+  function edit(d, isNew) {
+    var orig = T.current(), f = {}, names = { rose: 'Pink', violet: 'Violet', peach: 'Peach', sky: 'Sky', mint: 'Mint', sun: 'Sun' }, saved = false;
+    d.hues = Object.assign({}, T.hueBase, d.hues); d.mesh = (d.mesh || []).concat(['#ffffff', '#ffffff', '#ffffff']).slice(0, 3); d.font = Object.assign({ display: 'Cabinet Grotesk', text: 'General Sans' }, d.font); d.bg2 = d.bg2 || d.bg; d.surface2 = d.surface2 || d.surface; d.accent2 = d.accent2 || d.accent;
+    function fld(label, key, val) { var i = h('input', { type: 'color', value: val.length === 7 ? val : '#888888', oninput: live }); f[key] = i; return h('label', { class: 'ed' }, i, h('span', null, label)); }
+    var name = h('input', { type: 'text', value: d.name }), mode = h('select', { onchange: live }, h('option', { value: 'light' }, 'Light'), h('option', { value: 'dark' }, 'Dark')); mode.value = d.mode;
+    function fsel(v) { var s = h('select', { onchange: live }); T.fonts.forEach(function (x) { var o = h('option', { value: x.name }, x.name); s.appendChild(o); }); s.value = v; return s; }
+    var fd = fsel(d.font.display), ft = fsel(d.font.text);
+    function read() { var o = { id: d.id || '', name: name.value.trim() || 'My theme', mode: mode.value, builtin: false, bg: f.bg.value, bg2: f.bg2.value, surface: f.surface.value, surface2: f.surface2.value, ink: f.ink.value, accent: f.accent.value, accent2: f.accent2.value, hues: {}, mesh: [f.m0.value, f.m1.value, f.m2.value], font: { display: fd.value, text: ft.value } }; T.hues.forEach(function (k) { o.hues[k] = f['h-' + k].value; }); return o; }
+    function live() { try { T.preview(read()); } catch (e) { /* ignore half-typed values */ } }
+    var grid = h('div', { class: 'edgrid' }, fld('Background', 'bg', d.bg), fld('Background 2', 'bg2', d.bg2), fld('Surface', 'surface', d.surface), fld('Surface 2', 'surface2', d.surface2), fld('Ink (text)', 'ink', d.ink), fld('Accent', 'accent', d.accent), fld('Accent 2', 'accent2', d.accent2), T.hues.map(function (k) { return fld(names[k], 'h-' + k, d.hues[k]); }), fld('Glow 1', 'm0', d.mesh[0]), fld('Glow 2', 'm1', d.mesh[1]), fld('Glow 3', 'm2', d.mesh[2]));
+    var dlg = h('dialog', null, h('div', { class: 'sheet' }, h('h2', null, isNew ? 'New theme' : 'Edit theme'), h('div', { class: 'two' }, h('label', null, 'Name', name), h('label', null, 'Mode', mode)), grid, h('div', { class: 'two' }, h('label', null, 'Heading font', fd), h('label', null, 'Text font', ft)), h('p', { class: 'note' }, 'The page changes live while you edit.'), h('div', { class: 'acts' }, h('button', { class: 'btn', onclick: function () { dlg.close(); } }, 'Cancel'), h('button', { class: 'btn primary', onclick: function () { var o = read(); o.id = d.id && !isNew ? d.id : ''; var rec = T.register(o); saved = true; dlg.close(); T.use(rec.id); render(); toast('Saved “' + rec.name + '”'); } }, 'Save theme'))));
+    document.body.appendChild(dlg); dlg.showModal(); live();
+    dlg.addEventListener('close', function () { dlg.remove(); T.endPreview(); render(); });
+  }
+
+  function render() {
+    var tabs = [['themes', 'Themes'], ['colours', 'Colours'], ['fonts', 'Fonts'], ['use', 'Use it']], t = $('#tabs'); t.innerHTML = '';
+    tabs.forEach(function (x) { t.appendChild(h('button', { role: 'tab', 'aria-pressed': tab === x[0], onclick: function () { tab = x[0]; q = ''; render(); } }, x[1])); });
+    var v = $('#view'); v.innerHTML = ''; ({ themes: themes, colours: colours, fonts: fonts, use: use })[tab](v);
+  }
+  T.onChange(function () { /* keep the page's own chrome in sync */ });
+  render();
+})();
+</script>
+</body>
+</html>
